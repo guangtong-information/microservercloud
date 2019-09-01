@@ -20,3 +20,18 @@ spring:
       initial-size: 5 #初始化连接数
       max-total: 5  #最大链接数
       max-wait-millis: 200 #等待链接获取的最大超时时间
+
+eureka:
+  client: #将服务注册到eureka注册中心
+    service-url:
+#      defaultZone: http://127.0.0.1:7001/eureka
+      defaultZone: http://127.0.0.1:7001/eureka,http://127.0.0.1:7002/eureka,http://127.0.0.1:7003/eureka
+  instance:
+    instance-id: microservercloud-dept8001 # 自定义主机映射名
+    prefer-ip-address: true #鼠标放在访问链接的时候，左下角显示正式的IP和端口信息
+
+info: #info信息的输出，需要借助于spring-boot-starter-actuator，属于springboot监控和度量相关的内容
+  app.name: ypy-microservercloud
+  company.name: www.ypy.com
+  build.artifactId: $project.artifactId$ #这块内容的动态输出，需要结合父工程的build配置
+  build.version: $project.version$

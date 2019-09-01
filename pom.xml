@@ -12,6 +12,9 @@
         <module>microservercloud-api</module>
         <module>microservercloud-provider-dept-8001</module>
         <module>microservercloud-consumer-dept-80</module>
+        <module>microservercloud-eureka-7001</module>
+        <module>microservercloud-eureka-7002</module>
+        <module>microservercloud-eureka-7003</module>
     </modules>
 
     <properties>
@@ -94,4 +97,31 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!--添加build构建信息-->
+    <!--maven-resources-plugin插件，可以读取$符号开头和结尾的的内容-->
+    <!--用于微服务info信息的完善-->
+    <build>
+        <finalName>microservercloud</finalName>
+        <resources>
+            <resource>
+                <!--允许访问资源文件-->
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <delimiters>
+                        <!--$符号开头和结尾的内容-->
+                        <delimit>$</delimit>
+                    </delimiters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
