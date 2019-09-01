@@ -21,7 +21,7 @@ public class DeptController_Comsumer {
     }
 
     @RequestMapping(value = "/consumer/dept/get/{id}")
-    public Dept add(@PathVariable("id")Long id){
+    public Dept get(@PathVariable("id")Long id){
         return restTemplate.getForObject(REST_URL_PREFIX + "/dept/get/" + id,Dept.class);
     }
 
