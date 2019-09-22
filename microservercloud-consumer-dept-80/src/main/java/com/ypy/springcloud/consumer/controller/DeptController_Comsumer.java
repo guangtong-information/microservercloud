@@ -10,7 +10,10 @@ import java.util.List;
 @RestController
 public class DeptController_Comsumer {
 
-    private static final String REST_URL_PREFIX = "http://127.0.0.1:8001";
+//    private static final String REST_URL_PREFIX = "http://127.0.0.1:8001";
+
+    /*现在服务的发现通过注册中心去获取！*/
+    private static final String REST_URL_PREFIX = "http://MICROSERVERCLOUD-DEPT";
 
     @Autowired
     private RestTemplate restTemplate;

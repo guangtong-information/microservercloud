@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8003
 
 mybatis:
   config-location:  classpath:mybatis/mybatis.cfg.xml #配置Mybatis的配置文件，现在基本上用不到，因为这些配置都放在spring中了
@@ -23,7 +23,7 @@ spring:
 
 eureka:
   instance:
-    instance-id: microservercloud-dept8001 # 自定义主机映射名
+    instance-id: microservercloud-dept8003 # 自定义主机映射名
     prefer-ip-address: true #鼠标放在访问链接的时候，左下角显示正式的IP和端口信息
   client: #将服务注册到eureka注册中心
     service-url:

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ypy.springcloud.provider.dao.DeptDao">
+
+    <resultMap id="BaseResultMap" type="com.ypy.springcloud.api.entities.Dept">
+        <id column="deptno" jdbcType="BIGINT" property="deptno"/>
+        <result column="dname" jdbcType="VARCHAR" property="dname"/>
+        <result column="db_source" jdbcType="VARCHAR" property="db_source"/>
+    </resultMap>
+
+    <select id="findById" parameterType="Long" resultMap="BaseResultMap">
+    select
+    *
+    from dept
+    where deptno = #{deptno}
+    ORDER by deptno DESC
+  </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+    select
+    *
+    from dept
+    ORDER by deptno DESC
+  </select>
+
+    <insert id="addDept" parameterType="com.ypy.springcloud.api.entities.Dept">
+    insert into dept(dname,db_source) values (#{dname},database());
+  </insert>
+</mapper>
