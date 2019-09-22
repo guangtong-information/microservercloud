@@ -1,0 +1,37 @@
+server:
+  port: 8001
+
+mybatis:
+  config-location:  classpath:mybatis/mybatis.cfg.xml #配置Mybatis的配置文件，现在基本上用不到，因为这些配置都放在spring中了
+  type-aliases-package: com.ypy.springcloud.api.entities #所有的实体对象信息
+  mapper-locations: classpath:mybatis/mapper/**/*.xml #mapper映射文件
+
+spring:
+  application:
+    name: microservercloud-dept #这个名字很重要，对外暴露的微服务名
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver # mysql启动包
+    url: jdbc:mysql://127.0.0.1:3306/demo_test?characterEncoding=utf8&useSSL=false #数据库链接地址
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5 #数据库连接池的最小维持连接数
+      initial-size: 5 #初始化连接数
+      max-total: 5  #最大链接数
+      max-wait-millis: 200 #等待链接获取的最大超时时间
+
+eureka:
+  instance:
+    instance-id: microservercloud-dept8001-hystrix # 自定义主机映射名
+    prefer-ip-address: true #鼠标放在访问链接的时候，左下角显示正式的IP和端口信息
+  client: #将服务注册到eureka注册中心
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka
+
+info: #info信息的输出，需要借助于spring-boot-starter-actuator，属于springboot监控和度量相关的内容
+  app.name: ypy-microservercloud
+  company.name: www.ypy.com
+  build.artifactId: $project.artifactId$ #这块内容的动态输出，需要结合父工程的build配置
+  build.version: $project.version$

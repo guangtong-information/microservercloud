@@ -76,3 +76,53 @@ prefer-ip-address: true #鼠标放在访问链接的时候，左下角显示正�
 - 验证Ribbon的负载均衡
 - 服务消费者，不需要做改造：只需要 将服务启动，然后访问，查看效果：
 - 
+
+十四、使用Feigin，实现客户端的负载均衡（参加80项目）
+1、POM-feign
+2、YML-注册中心配置
+3、定义Controller 定义Service接口（@FeignClient）
+4、定义启动类（@EnableFeignClient）
+5、测试
+
+十五、Hystrix 断路保护器（容错保护）
+1、新建项目
+2、POM
+3、YML
+4、业务逻辑
+5、启动类（enableXXX）
+6、测试验证
+
+十六：服务的监控microservercloud-consumer-hystrix-dashboard
+1、新建项目
+2、POM
+3、YML
+4、启动类（EnableXX）
+5、测试验证
+    --启动7001
+    --启动hyxstric -8001
+    --启动9001 dashboard
+    
+十七：api网关-ZUUL（Netflix）
+1、新建项目
+2、POM
+3、YML
+4、启动类（EnableXX）
+5、测试验证
+    -启动注册中心7001
+    -启动服务提供者8001
+    -启动zuul网关9527
+    -测试验证
+
+十八：分布式配置中心
+1、新建项目（配置中心的服务端）
+2、POM
+3、YML
+4、启动类（EnableXX）
+5、测试验证
+
+十九：分布式配置中心
+1、新建项目（配置中心的客户端）
+2、POM
+3、YML
+4、启动类（EnableXX）
+5、测试验证

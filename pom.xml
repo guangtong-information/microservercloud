@@ -17,6 +17,12 @@
         <module>microservercloud-eureka-7003</module>
         <module>microservercloud-provider-dept-8002</module>
         <module>microservercloud-provider-dept-8003</module>
+        <module>microservercloud-consumer-dept-feign</module>
+        <module>microservercloud-provider-dept-hystrix-8001</module>
+        <module>microservercloud-consumer-hystrix-dashboard</module>
+        <module>microservercloud-zuul-gateway-9527</module>
+        <module>microservercloud-config-3344</module>
+        <module>microservercloud-config-client-3355</module>
     </modules>
 
     <properties>

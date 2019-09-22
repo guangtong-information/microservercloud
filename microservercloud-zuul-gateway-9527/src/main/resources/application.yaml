@@ -1,0 +1,34 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: microservercloud-zuul-gateway #这个名字很重要，对外暴露的微服务名
+
+eureka:
+  client: #服务注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka
+  instance: #自定义的服务名称
+    instance-id: microservercloud-zuul-gateway #注册中暴露服务的别名
+    prefer-ip-address: true #鼠标悬停在服务访问链接的时候，左下角路径有可能不显示ip地址，需要将访问路径现状为ip地址
+
+info: #info信息的输出，需要借助于spring-boot-starter-actuator，属于springboot监控和度量相关的内容
+  app.name: ypy-microservercloud
+  company.name: www.ypy.com
+  build.artifactId: $project.artifactId$ #这块内容的动态输出，需要结合父工程的build配置
+  build.version: $project.version$
+
+# 配置路由映射规则
+# 未增加映射配置访问：http://127.0.0.1:9527/microservercloud-dept/dept/get/1
+# 增加映射配置后访问：http://127.0.0.1:9527/mydept/dept/get/1
+zuul:
+#  ignored-services: microservercloud-dept #原真实服务名忽略，隐藏起来
+  ignored-services: "*"
+  routes:
+    mydept.serviceId: microservercloud-dept #真实的服务名称
+    mydept.path: /mydept/** #通过代理服务名称，访问真实的服务，实现安全保护
+  prefix: /ypy
+
+

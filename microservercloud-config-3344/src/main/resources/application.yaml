@@ -1,0 +1,16 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: microservercloud-config
+#    配置分布式配置中心：
+  cloud:
+   config:
+     server:
+       git:
+         uri: git@github.com:guangtong-information/microservercloud-Config.git #配置服务器，默认使用git，远程仓库的地址
+#私有仓库的时候，才需要配置此项
+#         username: XXX
+#         password: XXX
+         timeout: 20
